@@ -1,0 +1,17 @@
+
+body{
+	background-color: lightgray;
+}
+h3, h5 {
+	text-align: center;
+}
+textarea, input{
+	float:right;
+	width: 100%;
+}
+.row {
+    margin-bottom: 0.5rem;
+}
+#main .row{
+	margin-bottom: 1rem;
+}
