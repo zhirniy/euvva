@@ -20,7 +20,7 @@ Abstract class Model extends DB
   * Метод добавляющий запись в таблицу
   */   
   public function addnews($params){
-    $sql = "INSERT INTO ".$this->table." (user, description, date_created) VALUES (:user, :description, NOW())";
+   $sql = "INSERT INTO ".$this->table." (user, description, date_created) VALUES (:user, :description, NOW())";
     $user = $params['user'];
     $description = $params['description'];
 

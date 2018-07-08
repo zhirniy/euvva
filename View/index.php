@@ -17,7 +17,7 @@
 	<div class="col-lg-4"></div>
 	<div class="col-lg-4">
 			<label>Имя пользователя:</label>
-			<input class="form-control" type="text" name="user" required value="" placeholder="Ваше имя">
+			<input class="form-control" type="text" name="user" required pattern="[а-яА-Яa-zA-Z0-9_]{2,}" value="" placeholder="Ваше имя">
 	</div>
 	<div class="col-lg-4"></div>
 </div>
