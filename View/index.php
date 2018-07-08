@@ -32,7 +32,7 @@
 <div class="row">
 	<div class="col-lg-4"></div>
 	<div class="col-lg-4">
-		<input type="submit" class="btn btn-success" name="submit_news" value="Опубликовать">
+		<input type="submit" class="btn btn-success" name="" value="Опубликовать">
 	</div>
 	<div class="col-lg-4"></div>
 </div>

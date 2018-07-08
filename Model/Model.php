@@ -18,15 +18,26 @@ Abstract class Model extends DB
   }
   /**
   * Метод добавляющий запись в таблицу
+  *
   */   
   public function addnews($params){
-   $sql = "INSERT INTO ".$this->table." (user, description, date_created) VALUES (:user, :description, NOW())";
-    $user = $params['user'];
-    $description = $params['description'];
-
-    $dbn = new DB();
-    $dbn->execute($sql, $user, $description);
+    $column=null;
+    $key_ar_ = [];
+    $value_ar = [];
+      foreach ($params as $key => $value) {
+         $column.=$key.',';
+         array_push($key_ar_, ':'.$key);
+         array_push($value_ar, $value);
+     }
+     $value_prepare = implode(",", $key_ar_);
+     $sql = "INSERT INTO ".$this->table." (".$column." date_created) VALUES (". $value_prepare.", NOW())";
+     $dbn = new DB();
+     $dbn->execute($sql, $key_ar_, $value_ar);
   }
+  /**
+  * Метод подключающий шаблон для отображения страницы
+  *
+  */ 
   public static function display($params){
     include "View/index.php";
   }

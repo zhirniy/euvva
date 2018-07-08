@@ -25,11 +25,12 @@ protected $dbn;
     /**
     * Метод добавления данных в базу данных 
     */
-  	public function execute($sql, $user, $description){
-      $stmt = $this->dbn->prepare($sql);
-      $stmt->bindParam(':user', $user);
-      $stmt->bindParam(':description', $description);
-		  $stmt->execute();
+  	public function execute($sql, $key, $value){
+      $sth = $this->dbn->prepare($sql);
+      for ($i=0; $i < count($key); $i++) { 
+         $sth->bindParam($key[$i], $value[$i]);
+      }
+		  $sth->execute();
   	}
 
 }
