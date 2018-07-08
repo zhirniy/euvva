@@ -1,21 +1,34 @@
 <?php
-require_once "Model\DB.php";
-class Model extends DB
+require_once "DB.php";
+/**
+* Абстрактный класс реализующий методы обращения к базе данных 
+* Наследует подключение к базе данных
+*/
+Abstract class Model extends DB
 {
-    protected $dbn;
-    //Функция получение и вывода списка Call center
-         public static function data($table)
-    {
-       //Подключаемся к базе данных и делаем выборку значений. Полученный результат записываем в переменную $res
-      //и передаём переменную в seqrch.php
-        $dbn = new DB();
-        $sql = $dbn->query('SELECT * FROM '.$table, null);
-        if($sql){
-            $res = 0;
-        }
-        return $res;
-      
-    
-    }
+  /**
+  * Метод возвращающий всё записи из таблицы
+  */  
+  public function allnews(){
+    $sql = "SELECT * FROM ".$this->table." ORDER BY id DESC";
+    $dbn = new DB();
+    $class_name = $this->class_name;
+    $result = $dbn->query($sql, $class_name);
+    return $result;  
+  }
+  /**
+  * Метод добавляющий запись в таблицу
+  */   
+  public function addnews($params){
+    $sql = "INSERT INTO ".$this->table." (user, description, date_created) VALUES (:user, :description, NOW())";
+    $user = $params['user'];
+    $description = $params['description'];
+
+    $dbn = new DB();
+    $dbn->execute($sql, $user, $description);
+  }
+  public static function display($params){
+    include "View/index.php";
+  }
 }
 ?>

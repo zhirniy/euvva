@@ -1,23 +1,37 @@
 <?php
+/**
+* Класс подключения к базе данных 
+*/
 
 class DB
 {
 protected $dbn;	
-public function __construct()
-  {
+    /**
+    * При вызове конструктора создаём подключение к базе данных 
+    */
+    public function __construct(){
      $this->dbn = new \PDO('mysql:host=localhost; dbname=euvva', 'root', '21072013');
    }
-   public function query($params, $id)
-   {
-    //Подготавливаем и делаем запрос к базе данных
-   	$stmt = $this->dbn->prepare($params);
-    if($id!==null){
-    $stmt->execute(array('id' => $id));}
-    else{
-    $stmt->execute();  
-    }
-    return $stmt;
-  }
+    /**
+    * Метод получения данных из базы 
+    * Возвращает массив объектов дочернего класса 
+    */
+  	public function query($sql, $class_name){
+  	    $sth = $this->dbn->prepare($sql);
+		    $sth->execute();
+		    $result = $sth->fetchAll(PDO::FETCH_CLASS, $class_name);
+		    return $result;
+  	}
+    /**
+    * Метод добавления данных в базу данных 
+    */
+  	public function execute($sql, $user, $description){
+      $stmt = $this->dbn->prepare($sql);
+      $stmt->bindParam(':user', $user);
+      $stmt->bindParam(':description', $description);
+		  $stmt->execute();
+  	}
+
 }
 
 ?>
