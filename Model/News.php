@@ -1,3 +1,4 @@
+
 <?php
 require_once "Model/Model.php";
 /**
@@ -8,7 +9,7 @@ class News extends Model{
 	public $user;
     public $description;
     public $date_created;
-    public $table = "news";
-    public $class_name = __CLASS__;
+    const TABLE  = "news";
+    const CLASS_NAME = __CLASS__;
 }
 ?>
