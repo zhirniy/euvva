@@ -11,7 +11,11 @@ textarea, input{
 }
 .row {
     margin-bottom: 0.5rem;
+    padding-left: 30px;
+	padding-right: 30px;
 }
 #main .row{
 	margin-bottom: 1rem;
+	padding-left: 30px;
+	padding-right: 30px;
 }
