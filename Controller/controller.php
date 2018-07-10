@@ -1,5 +1,7 @@
 <?php
+namespace euvva\Controller;
 require_once "Model/News.php";
+use euvva\Model\News;
 //Создаём экземляр класса News
 $news = new News();
 //Если пришёл POST запрос - передаём в модель для обработки (добавления записи)

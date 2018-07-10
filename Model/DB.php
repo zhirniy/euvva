@@ -1,8 +1,8 @@
 <?php
+namespace euvva\Model;
 /**
 * Класс подключения к базе данных 
 */
-
 class DB
 {
 protected $dbn;	
@@ -10,7 +10,7 @@ protected $dbn;
     * При вызове конструктора создаём подключение к базе данных 
     */
     public function __construct(){
-     $this->dbn = new \PDO('mysql:host=localhost; dbname=euvva', 'root', '21072013');
+     $this->dbn = new \PDO('mysql:host=localhost; dbname=euvva', 'root', '');
    }
     /**
     * Метод получения данных из базы 
@@ -19,7 +19,7 @@ protected $dbn;
   	public function query($sql, $class_name){
   	    $sth = $this->dbn->prepare($sql);
 		    $sth->execute();
-		    $result = $sth->fetchAll(PDO::FETCH_CLASS, $class_name);
+		    $result = $sth->fetchAll(\PDO::FETCH_CLASS, $class_name);
 		    return $result;
   	}
     /**

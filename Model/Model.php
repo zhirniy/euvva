@@ -1,5 +1,7 @@
 <?php
+namespace euvva\Model;
 require_once "DB.php";
+use euvva\Model\DB;
 /**
 * Абстрактный класс реализующий методы обращения к базе данных 
 * Наследует подключение к базе данных
